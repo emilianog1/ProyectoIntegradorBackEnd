@@ -60,8 +60,8 @@ public class CEducacion {
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoedu){      
         if(StringUtils.isBlank(dtoedu.getNombreEd())) //me fijo si no escribio nada
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-        if(sEducacion.existsByNombreEd(dtoedu.getNombreEd())) //me fijo si ya existe
-            return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
+        //if(sEducacion.existsByNombreEd(dtoedu.getNombreEd())) //me fijo si ya existe
+        //    return new ResponseEntity(new Mensaje("Esa experiencia existe"), HttpStatus.BAD_REQUEST);
         //creo la educacion con los datos ingresados
         Educacion educacion = new Educacion(dtoedu.getNombreEd(), dtoedu.getDescripcionEd(),dtoedu.getEstadoEd());
         sEducacion.save(educacion); //guardo lo que se cargo en la linea de arriba
@@ -75,8 +75,8 @@ public class CEducacion {
         if(!sEducacion.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
         //Compara nombre de educacion
-        if(sEducacion.existsByNombreEd(dtoedu.getNombreEd()) && sEducacion.getByNombreEd(dtoedu.getNombreEd()).get().getId() != id)
-            return new ResponseEntity(new Mensaje("Esa educacion ya existe"), HttpStatus.BAD_REQUEST);
+        //if(sEducacion.existsByNombreEd(dtoedu.getNombreEd()) && sEducacion.getByNombreEd(dtoedu.getNombreEd()).get().getId() != id)
+        //    return new ResponseEntity(new Mensaje("Esa educacion ya existe"), HttpStatus.BAD_REQUEST);
         //El nombre no puede estar vacio
         if(StringUtils.isBlank(dtoedu.getNombreEd()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
